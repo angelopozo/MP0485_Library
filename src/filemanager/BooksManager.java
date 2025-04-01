@@ -42,9 +42,7 @@ public class BooksManager {
     public static void initializeBooks() throws FileNotFoundException, IOException {
         FileReader fr = new FileReader(inventory);
         BufferedReader br = new BufferedReader(fr);
-        
-        
-        
+
         for (String line = br.readLine(); line != null; line = br.readLine()) {
             String[] attributesBook = line.split(";");
             String[] authors = attributesBook[4].split(",");
@@ -58,12 +56,14 @@ public class BooksManager {
         }
     }
 
-    public static boolean bookExists(String title) throws IOException {
+    public static boolean bookExists(Book book) throws IOException {
         Iterator it = inventoryBooks.keySet().iterator();
 
         while (it.hasNext()) {
             String key = (String) it.next();
-            if (inventoryBooks.get(key).equals(new Book("", title, 0, 0))) {
+            if (inventoryBooks.get(key).equals(book)) {
+                return true;
+            } else if (inventoryBooks.get(key).getIsbn().equals(book.getIsbn())) {
                 return true;
             }
         }
@@ -108,11 +108,10 @@ public class BooksManager {
         bw.close();
     }
 
-    public static void addNewBook(String isbn, String title, double price, int stock, ArrayList<String> authors) throws IOException {
-        Book book = new Book(isbn, title, price, stock);
+    public static void addNewBook(Book book, ArrayList<String> authors) throws IOException {
         book.setAuthors(authors);
 
-        inventoryBooks.put(isbn, book);
+        inventoryBooks.put(book.getIsbn(), book);
 
         overwriteFile();
     }

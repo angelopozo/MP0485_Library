@@ -1,4 +1,3 @@
-Prueba;Prueba;10.0;290;Angelo Pozo
 9788413141596;El código Da Vinci;27.5;18;Dan Brown  
 9789505636563;Hora de aventuras;10.0;220;Angelo Pozo
 9788466351670;1984;0.0;0;George Orwell  

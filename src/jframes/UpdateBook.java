@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import main.Book;
 
 /**
  *
@@ -191,7 +192,7 @@ public class UpdateBook extends javax.swing.JFrame {
         }
 
         try {
-            if (BooksManager.bookExists(title.getText())) {
+            if (BooksManager.bookExists(new Book("", title.getText(), 0, 0))) {
                 this.setSize(511, 450);
                 title.setEditable(false);
                 selectBook.setEnabled(false);

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import main.Book;
 
 /**
  *
@@ -103,7 +104,7 @@ public class DeleteBook extends javax.swing.JFrame {
 
     private void deleteBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookActionPerformed
         try {
-            if (BooksManager.bookExists(title.getText())) {
+            if (BooksManager.bookExists(new Book("", title.getText(), 0, 0))) {
                 BooksManager.deleteBook(title.getText());
                 JOptionPane.showMessageDialog(this, "LOG: El libro ha sido eliminado con éxito.");
                 returnMenuActionPerformed(evt);

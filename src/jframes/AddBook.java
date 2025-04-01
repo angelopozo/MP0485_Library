@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import main.Book;
 
 /**
  *
@@ -178,8 +179,9 @@ public class AddBook extends javax.swing.JFrame {
         }
 
         try {
-            if (!BooksManager.bookExists(title.getText())) {
-                BooksManager.addNewBook(isbn.getText(), title.getText(), Double.parseDouble(price.getValue().toString()), Integer.parseInt(stock.getValue().toString()), authors);
+            Book book = new Book(isbn.getText(), title.getText(), Double.parseDouble(price.getValue().toString()), Integer.parseInt(stock.getValue().toString()));
+            if (!BooksManager.bookExists(book)) {
+                BooksManager.addNewBook(book, authors);
                 JOptionPane.showMessageDialog(this, "LOG: El libro ha sido añadido con éxito.");
                 returnMenuActionPerformed(evt);
             } else {
